@@ -1,0 +1,9 @@
+*{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* main */
+section#main{
+    /* background-color: #6f42c1; */
+    height: 100vh;
+}
