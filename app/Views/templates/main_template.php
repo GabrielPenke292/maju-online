@@ -40,10 +40,13 @@
         <hr>
         
     </header>
-    <?= $this->renderSection('main') ?>
+    
+    <?= $this->renderSection('busca'); ?>
+    
+    <?= $this->renderSection('card'); ?>
     
     
-    <footer class="text-center fixed-bottom bg-secondary">    
+    <footer class="text-center bg-secondary">    
         <p>Maju Online &copy; - <?= date('Y') ?></p>
     </footer>
 
