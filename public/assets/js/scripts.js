@@ -16,10 +16,14 @@ function funcaoTeste(){
                                     <td>" + response[i].LocalizedName +  "</td>\
                                     <td>" + response[i].AdministrativeArea.LocalizedName + "</td>\
                                     <td>" + response[i].Country.LocalizedName + "</td>\
-                                    <td><a href='#' onclick='consultarClima("+response[i].Key+")'><i class='fa fa-search'></i></a></td>\
+                                    <td><a href='#' onclick='consultarClima("+response[i].Key+","+response[i].LocalizedName+")' ><i class='fa fa-search'></i></a></td>\
                                     </tr>"
 
                 );
+                // $("#link").click(function(){
+                //     consultarClima(response[i].Key, response[i].LocalizedName);
+                // });
+
             }
             let key = response[0].Key;
             console.log(response);
@@ -32,17 +36,21 @@ function funcaoTeste(){
      });
 }
 
-function consultarClima(key){
+function consultarClima(key, cidade){
 
     $.ajax({
      type: "get",
-        currentconditions/v1/39449?apikey=K3rgPRk6b2GzxJgChMYMtxdQHuuxTxAB&language=pt-br
      url: "http://dataservice.accuweather.com/currentconditions/v1/" + key + '?apikey='+ API_KEY + "&language=pt-br",
      dataType: "jsonp",
      success: function(data){
+         console.log("abaixo");
+         console.log(data);
          let temperatura = (data[0].Temperature.Metric.Value);
+
          alert(temperatura + "ºC");
+         $("#cityName").text(cidade);
          $("#temperatura").text(temperatura);
+
      }
      });
 }

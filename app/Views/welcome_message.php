@@ -27,7 +27,7 @@
 				<div class="card" style="width: 18rem;">
 					<img src="assets/img/morning.png" class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">Lavras</h5>
+						<h5 class="card-title" id="cityName">Lavras</h5>
 						<p class="card-text" id="temperatura">18°C</p>
 					</div>
 					<ul class="list-group list-group-flush">
@@ -76,3 +76,5 @@
 
 
 <?= $this->endSection(); ?>
+
+
