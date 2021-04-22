@@ -30,9 +30,9 @@
 						<p class="card-text" id="temperatura">18°C</p>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">An item</li>
-						<li class="list-group-item">A second item</li>
-						<li class="list-group-item">A third item</li>
+						<li class="list-group-item" id="clima">An item</li>
+						<li class="list-group-item" id="data">A second item</li>
+						<li class="list-group-item" id="hora">A third item</li>
 					</ul>
 				</div>
 		</div>
