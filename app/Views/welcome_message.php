@@ -23,8 +23,7 @@
 <?= $this->section("card"); ?>
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="">
-				<div class="card" style="width: 18rem;">
+				<div class="card my-3 p-1 bg-info" style="width: 18rem;">
 					<img src="assets/img/morning.png" class="card-img-top" alt="...">
 					<div class="card-body">
 						<h5 class="card-title" id="cityName">Lavras</h5>
@@ -36,9 +35,6 @@
 						<li class="list-group-item">A third item</li>
 					</ul>
 				</div>
-			</div>
-			
-
 		</div>
 	</div>
 

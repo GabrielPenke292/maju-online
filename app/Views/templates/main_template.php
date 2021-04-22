@@ -49,8 +49,8 @@
     <?= $this->renderSection('card'); ?>
 
     
-    <footer class="text-center bg-secondary">    
-        <p>Maju Online &copy; - <?= date('Y') ?></p>
+    <footer class="text-center bg-secondary p-1">
+        <p class="mt-3">Maju Online &copy; - <?= date('Y') ?></p>
     </footer>
 
     <script src="assets/js/scripts.js"></script>
