@@ -34,18 +34,24 @@ function consultarClima(key, cidade){
      url: "http://dataservice.accuweather.com/currentconditions/v1/" + key + '?apikey='+ API_KEY + "&language=pt-br",
      dataType: "jsonp",
      success: function(data){
-         console.log("abaixo");
-         console.log(data);
          let temperatura = (data[0].Temperature.Metric.Value);
          let clima = data[0].WeatherText;
          let dat = data[0].LocalObservationDateTime.split("T")[0];
-         let hora = data[0].LocalObservationDateTime.split("T")[1];
-         console.log(dat);
+         console.log(data[0].LocalObservationDateTime);
+         let dia = dat.split("-")[2];
+         let mes = dat.split("-")[1];
+         let ano = dat.split("-")[0];
+
+         let dataCorreta = dia + "/" + mes + "/" + ano;
+
+         let link = "https://www.google.com/search?q=temperatura+em+" + cidade;
+
          $("#cityName").text(cidade);
          $("#temperatura").text(temperatura);
          $("#clima").text(clima);
-         $("#data").text(dat);
-         $("#hora").text(hora);
+         $("#data").text(dataCorreta);
+         $("#hora").text("");
+         $("#hora").append("<a href='"+link+"' target='_blank'>Consulte aqui</a>");
          $("#chooseCity").modal('hide');
      }
      });
