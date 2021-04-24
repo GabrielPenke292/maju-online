@@ -10,13 +10,14 @@ function funcaoTeste(){
         url: "http://dataservice.accuweather.com/locations/v1/cities/search?apikey="+API_KEY+"&q="+city+"&language=pt-br",
         dataType: "json",
         success: function (response) {
+
             $("#chooseCity").modal('show');
             for(let i=0; i<response.length; i++){
                 $("#cities").append('<tr>\
                                     <td>' + response[i].LocalizedName +  '</td>\
                                     <td>' + response[i].AdministrativeArea.LocalizedName + '</td>\
                                     <td>' + response[i].Country.LocalizedName + '</td>\
-                                    <td><a href="#" onclick="consultarClima('+response[i].Key+',\`'+response[i].LocalizedName+'\`)" ><i class="fa fa-search"></i></a></td>\
+                                    <td><a href="#" onclick="consultarClima('+response[i].Key+',\`'+response[i].LocalizedName+'\`,\`'+ response[i].TimeZone['Name']+'\`)" ><i class="fa fa-search"></i></a></td>\
                                     </tr>'
                 );
             }
@@ -27,7 +28,7 @@ function funcaoTeste(){
      });
 }
 
-function consultarClima(key, cidade){
+function consultarClima(key, cidade, zona){
 
     $.ajax({
      type: "get",
@@ -36,22 +37,31 @@ function consultarClima(key, cidade){
      success: function(data){
          let temperatura = (data[0].Temperature.Metric.Value);
          let clima = data[0].WeatherText;
-         let dat = data[0].LocalObservationDateTime.split("T")[0];
-         console.log(data[0].LocalObservationDateTime);
-         let dia = dat.split("-")[2];
-         let mes = dat.split("-")[1];
-         let ano = dat.split("-")[0];
-
-         let dataCorreta = dia + "/" + mes + "/" + ano;
-
-         let link = "https://www.google.com/search?q=temperatura+em+" + cidade;
 
          $("#cityName").text(cidade);
          $("#temperatura").text(temperatura);
          $("#clima").text(clima);
-         $("#data").text(dataCorreta);
-         $("#hora").text("");
-         $("#hora").append("<a href='"+link+"' target='_blank'>Consulte aqui</a>");
+
+         $.ajax({
+             type: 'get',
+             url: "http://api.timezonedb.com/v2.1/get-time-zone?key=CIHIQ35CUES3&format=json&by=zone&zone=" + zona,
+             dataType: "json",
+             success: function(resp){
+                 console.log(resp);
+                 let dataTime = resp['formatted'];
+                 let data = dataTime.split(" ")[0];
+                 let hora = dataTime.split(" ")[1];
+                 let dia = data.split("-")[2];
+                 let mes = data.split("-")[1];
+                 let ano = data.split("-")[0];
+
+                 let dataCorreta = dia + "/" + mes + "/" + ano;
+
+                 $("#data").text(dataCorreta);
+                 $("#hora").text(hora);
+
+             }
+         })
          $("#chooseCity").modal('hide');
      }
      });
