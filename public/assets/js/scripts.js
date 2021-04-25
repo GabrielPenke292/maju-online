@@ -38,6 +38,37 @@ function consultarClima(key, cidade, zona){
          let temperatura = (data[0].Temperature.Metric.Value);
          let clima = data[0].WeatherText;
 
+         // if(clima == "Ensolarado" || clima == "Parcialmente ensolarado" || clima == "Parcialmente aberto"){
+         //     $("#img-time").attr("src", "assets/img/sunny_day.png");
+         // }else if(clima == "Nublado"){
+         //     $("#img-time").attr("src", "assets/img/nublado.jpg");
+         // }else if(clima == "Predominantemente nublado"){
+         //     $("#img-time").attr("src", "assets/img/predominante_nublado.jpg");
+         // }else{
+         //     $("#img-time").attr("src", "assets/img/interrogacao.jpg");
+         // }
+         switch (clima){
+             case "Ensolarado":
+             case "Parcialmente ensolarado":
+             case "Parcialmente aberto":
+             case "Predominantemente aberto":
+             case "Predominantemente ensolarado":
+             case "Céu claro":
+                 $("#img-time").attr("src", "assets/img/sunny_day.png");
+                 break;
+             case "Encoberto":
+             case "Nublado":
+                 $("#img-time").attr("src", "assets/img/nublado.jpg");
+                 break;
+             case "Algumas nuvens":
+             case "Predominantemente nublado":
+                 $("#img-time").attr("src", "assets/img/predominante_nublado.jpg");
+                 break;
+             default:
+                 $("#img-time").attr("src", "assets/img/interrogacao.jpg");
+                 break;
+         }
+         console.log(data);
          $("#cityName").text(cidade);
          $("#temperatura").text(temperatura);
          $("#clima").text(clima);
@@ -47,7 +78,7 @@ function consultarClima(key, cidade, zona){
              url: "http://api.timezonedb.com/v2.1/get-time-zone?key=CIHIQ35CUES3&format=json&by=zone&zone=" + zona,
              dataType: "json",
              success: function(resp){
-                 console.log(resp);
+
                  let dataTime = resp['formatted'];
                  let data = dataTime.split(" ")[0];
                  let hora = dataTime.split(" ")[1];

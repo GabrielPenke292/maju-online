@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 				<div class="card my-3 p-1 bg-info" style="width: 18rem;">
-					<img src="assets/img/morning.png" class="card-img-top" alt="...">
+					<img src="assets/img/sunny_day.png" class="card-img-top" alt="imagem do tempo" id="img-time">
 					<div class="card-body">
 						<h5 class="card-title" id="cityName">Lavras</h5>
 						<p class="card-text" id="temperatura">18°C</p>
