@@ -23,7 +23,12 @@ function funcaoTeste(){
             }
         },
         error: function(response){
-            console.log("Deu ruim");
+            Swal.fire({
+                title: 'Erro',
+                text: 'Algo deu errado!',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
         }
      });
 }
