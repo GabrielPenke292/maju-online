@@ -15,6 +15,7 @@
 			</form>
 		</div>
 	</div>
+    <input type="text" hidden id="periodo">
 </section>
 
 

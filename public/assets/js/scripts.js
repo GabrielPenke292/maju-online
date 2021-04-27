@@ -43,36 +43,6 @@ function consultarClima(key, cidade, zona){
          let temperatura = (data[0].Temperature.Metric.Value);
          let clima = data[0].WeatherText;
 
-         // if(clima == "Ensolarado" || clima == "Parcialmente ensolarado" || clima == "Parcialmente aberto"){
-         //     $("#img-time").attr("src", "assets/img/sunny_day.png");
-         // }else if(clima == "Nublado"){
-         //     $("#img-time").attr("src", "assets/img/nublado.jpg");
-         // }else if(clima == "Predominantemente nublado"){
-         //     $("#img-time").attr("src", "assets/img/predominante_nublado.jpg");
-         // }else{
-         //     $("#img-time").attr("src", "assets/img/interrogacao.jpg");
-         // }
-         switch (clima){
-             case "Ensolarado":
-             case "Parcialmente ensolarado":
-             case "Parcialmente aberto":
-             case "Predominantemente aberto":
-             case "Predominantemente ensolarado":
-             case "Céu claro":
-                 $("#img-time").attr("src", "assets/img/sunny_day.png");
-                 break;
-             case "Encoberto":
-             case "Nublado":
-                 $("#img-time").attr("src", "assets/img/nublado.jpg");
-                 break;
-             case "Algumas nuvens":
-             case "Predominantemente nublado":
-                 $("#img-time").attr("src", "assets/img/predominante_nublado.jpg");
-                 break;
-             default:
-                 $("#img-time").attr("src", "assets/img/interrogacao.jpg");
-                 break;
-         }
          console.log(data);
          $("#cityName").text(cidade);
          $("#temperatura").text(temperatura);
@@ -93,12 +63,60 @@ function consultarClima(key, cidade, zona){
 
                  let dataCorreta = dia + "/" + mes + "/" + ano;
 
+                 let periodo = definirPeriodo(hora);
+                 $("#periodo").text(periodo);
+
                  $("#data").text(dataCorreta);
                  $("#hora").text(hora);
 
              }
          })
+         let p = $("#periodo").val();
+         console.log(p);
+         switch (clima){
+             case "Ensolarado":
+             case "Parcialmente ensolarado":
+             case "Parcialmente aberto":
+             case "Predominantemente aberto":
+             case "Predominantemente ensolarado":
+             case "Céu claro":
+                 $("#img-time").attr("src", "assets/img/sunny_day.png");
+                 break;
+             case "Encoberto":
+             case "Parcialmente nublado":
+             case "Nublado":
+                 $("#img-time").attr("src", "assets/img/nublado.jpg");
+                 break;
+             case "Algumas nuvens":
+             case "Predominantemente nublado":
+                 $("#img-time").attr("src", "assets/img/predominante_nublado.jpg");
+                 break;
+             case "Chuva":
+             case "Chuva fraca":
+                 $("#img-time").attr("src", "assets/img/rainy_day.jpg")
+                 break;
+             default:
+                 $("#img-time").attr("src", "assets/img/interrogacao.jpg");
+                 break;
+         }
+
+
          $("#chooseCity").modal('hide');
      }
      });
+}
+
+function definirPeriodo(hora){
+
+    let horaManhaComeco = "06:00:00"
+    let horaManhaFim = "11:59:59";
+    let horaTardeComeco = "12:00:00";
+    let horaTardeFim = "17:59:59";
+
+    if(hora >= horaManhaComeco && hora <= horaManhaFim){
+        return "Manhã";
+    }else if(hora >= horaTardeComeco && hora <= horaTardeFim){
+        return "Tarde";
+    }
+    return "Noite";
 }
