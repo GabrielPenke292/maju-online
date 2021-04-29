@@ -29,7 +29,7 @@
 
 </head>
 <body>
-    <header>
+    <header class='bg-secondary text-white'>
         <div class="container-fluid text-center">
             <div class="col-md-12 header">
                 <div class="row">
@@ -37,7 +37,7 @@
                         <a href="#" class="ml-5">[Logo]</a>
                     </div>
                     <div class="col-md-6 title ">
-                        <h1 class="mt-3">Bem Vindo ao Maju Online</h1>
+                        <h1 class="mt-3">Maju Online</h1>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
     <?= $this->renderSection('card'); ?>
 
     
-    <footer class="text-center bg-secondary p-1">
+    <footer class="text-center bg-secondary text-white p-1">
         <p class="mt-3">Maju Online &copy; - <?= date('Y') ?></p>
     </footer>
 

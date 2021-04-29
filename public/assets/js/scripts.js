@@ -80,7 +80,12 @@ function consultarClima(key, cidade, zona){
              case "Predominantemente aberto":
              case "Predominantemente ensolarado":
              case "Céu claro":
-                 $("#img-time").attr("src", "assets/img/sunny_day.png");
+				if(p != 'noite'){
+					$("#img-time").attr("src", "assets/img/sunny_day.png");	
+				}else{
+					$("#img-time").attr("src", "assets/img/night.png");
+				}
+                 
                  break;
              case "Encoberto":
              case "Parcialmente nublado":

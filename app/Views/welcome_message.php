@@ -5,10 +5,10 @@
 
 <section id="main" class='position-relative'>
 	<div class="container">
-		<div class="col-md-12 text-center">
+		<div class="col-md-12 text-center mx-auto">
 			<form method="post">
-				<div class="mb-3">
-					<label for="city" class="form-label">Digite uma cidade</label>
+				<div class="mb-3 mx-auto col-md-6">
+					<p>Bem vindo(a) ao Maju Online, digite o nome de uma cidade para consultar seu clima</p>
 					<input type="text" class="form-control" id="city" placeholder="Cidade" required>					
 				</div>
 				<input type="submit" class="btn btn-primary" onclick="funcaoTeste()" value="Pesquisar" >
@@ -27,13 +27,13 @@
 				<div class="card my-3 p-1 bg-info" style="width: 18rem;">
 					<img src="assets/img/sunny_day.png" class="card-img-top" alt="imagem do tempo" id="img-time">
 					<div class="card-body">
-						<h5 class="card-title" id="cityName">Lavras</h5>
-						<p class="card-text" id="temperatura">18°C</p>
+						<h5 class="card-title" id="cityName">Cidade</h5>
+						<p class="card-text" id="temperatura">Temperatura</p>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item" id="clima">An item</li>
-						<li class="list-group-item" id="data">A second item</li>
-						<li class="list-group-item" id="hora">A third item</li>
+						<li class="list-group-item" id="clima">Clima</li>
+						<li class="list-group-item" id="data">Data</li>
+						<li class="list-group-item" id="hora">Hora</li>
 					</ul>
 				</div>
 		</div>
