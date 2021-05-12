@@ -6,9 +6,10 @@
 <section id="main" class='position-relative'>
 	<div class="container">
 		<div class="col-md-12 text-center mx-auto">
-			<form method="post">
+<!--            <div class="overlay"></div>-->
+            <form method="post" class="form-city">
 				<div class="mb-3 mx-auto col-md-6">
-					<p>Bem vindo(a) ao Maju Online, digite o nome de uma cidade para consultar seu clima</p>
+					<p class="text-white">Bem vindo(a) ao Maju Online, digite o nome de uma cidade para consultar seu clima</p>
 					<input type="text" class="form-control" id="city" placeholder="Cidade" required>					
 				</div>
 				<input type="submit" class="btn btn-primary" onclick="funcaoTeste()" value="Pesquisar" >
